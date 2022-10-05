@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: jenkins
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: jenkins
@@ -23,6 +23,9 @@ spec:
         - name: jenkins-config
           mountPath: /var/jenkins_home/casc_configs/jenkins.yaml
           subPath: jenkins.yaml
+        envFrom:
+        - secretRef:
+            name: jenkins
       volumes:
       - name: jenkins-home
         persistentVolumeClaim:
