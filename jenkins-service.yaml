@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: jenkins-yaml
+  namespace: jenkins
 spec:
   type: NodePort
   ports:
